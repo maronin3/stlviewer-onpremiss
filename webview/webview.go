@@ -1,8 +1,8 @@
 package webview
 
 import (
-	"fiber/utils"
 	"log"
+	"stlviewer/utils"
 
 	"github.com/webview/webview"
 )

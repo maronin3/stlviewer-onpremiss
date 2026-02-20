@@ -38,38 +38,38 @@ func Init() {
 		// load 'server.ini'
 		cfg, err := ini.Load(filename)
 		if err != nil {
-			logger.Println(fmt.Sprintf("Load 'server.ini':%v \n", err))
-			log.Fatal(fmt.Sprintf("Load 'server.ini':%v \n", err))
+			logger.Printf("Load 'server.ini':%v \n", err)
+			log.Fatalf("Load 'server.ini':%v \n", err)
 		}
 
 		version := cfg.Section("Application").Key("Version").String()
 
 		devMode, err := cfg.Section("Application").Key("DevMode").Bool()
 		if err != nil {
-			logger.Println(fmt.Sprintf("cfg.Section key'DevMode':%v \n", err))
-			log.Fatal(fmt.Sprintf("cfg.Section key'DevMode':%v \n", err))
+			logger.Printf("cfg.Section key'DevMode':%v \n", err)
+			log.Fatalf("cfg.Section key'DevMode':%v \n", err)
 		}
 
 		ip := cfg.Section("Server").Key("IP").String()
 
 		port, err := cfg.Section("Server").Key("Port").Int()
 		if err != nil {
-			logger.Println(fmt.Sprintf("cfg.Section key'Port':%v \n", err))
-			log.Fatal(fmt.Sprintf("cfg.Section key'Port':%v \n", err))
+			logger.Printf("cfg.Section key'Port':%v \n", err)
+			log.Fatalf("cfg.Section key'Port':%v \n", err)
 		}
 
 		title := cfg.Section("WebView").Key("Title").String()
 
 		width, err := cfg.Section("WebView").Key("Width").Int()
 		if err != nil {
-			logger.Println(fmt.Sprintf("cfg.Section key'Width':%v \n", err))
-			log.Fatal(fmt.Sprintf("cfg.Section key'Width':%v \n", err))
+			logger.Printf("cfg.Section key'Width':%v \n", err)
+			log.Fatalf("cfg.Section key'Width':%v \n", err)
 		}
 
 		height, err := cfg.Section("WebView").Key("Height").Int()
 		if err != nil {
-			logger.Println(fmt.Sprintf("cfg.Section key'Height':%v \n", err))
-			log.Fatal(fmt.Sprintf("cfg.Section key'Height':%v \n", err))
+			logger.Printf("cfg.Section key'Height':%v \n", err)
+			log.Fatalf("cfg.Section key'Height':%v \n", err)
 		}
 
 		url := cfg.Section("WebView").Key("URL").String()
@@ -88,16 +88,16 @@ func Init() {
 		// make 'server.ini'
 		_, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err != nil {
-			logger.Println(fmt.Sprintf("Make 'server.ini':%v \n", err))
-			log.Fatal(fmt.Sprintf("Make 'server.ini':%v \n", err))
+			logger.Printf("Make 'server.ini':%v \n", err)
+			log.Fatalf("Make 'server.ini':%v \n", err)
 		}
 
 		// set defalut config
 		config := &Config{}
 		setError := Set(config, "default")
 		if setError != nil {
-			logger.Println(fmt.Sprintf("Set Default Config:%v \n", err))
-			log.Fatal(fmt.Sprintf("Set Default Config:%v \n", err))
+			logger.Printf("Set Default Config:%v \n", setError)
+			log.Fatalf("Set Default Config:%v \n", setError)
 		}
 		Env = *config
 

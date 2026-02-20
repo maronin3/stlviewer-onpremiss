@@ -1,11 +1,11 @@
 package server
 
 import (
-	"fiber/utils"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"stlviewer/utils"
 	"time"
 
 	"github.com/gofiber/fiber/v2"
